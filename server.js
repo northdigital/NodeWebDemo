@@ -35,6 +35,16 @@ app.get("/helpers/each", (req, res) => {
   });
 });
 
+app.get("/helpers/each2", (req, res) => {
+  res.render("each2", {
+    title: "Each2 Helper Page",
+    warehouse: [
+      { room: [{ product: "computers", price: 100 }, { product: "hifi", price: 70 }] },
+      { room: [{ product: "cars", price: 1000 }, { product: "bikes", price: 170 }] },
+      { room: [{ product: "tomatoes", price: 20 }, { product: "potatoes", price: 10 }] }
+    ]
+  });
+});
 
 // end routing
 

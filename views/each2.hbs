@@ -1,0 +1,30 @@
+<h1>this is page each2</h1>
+
+{{!-- {{#each warehouse}}
+{{#each this.room}}
+{{log this.product}}
+{{/each}}
+{{/each}}
+
+{{#each warehouse}}
+{{log this.room.[1]}}
+{{/each}}
+
+{{#each warehouse}}
+{{log this.room.1.price}}
+{{/each}}
+
+<h1>squares are optional when index is followed by a property</h1>
+{{#each warehouse}}
+<p>{{this.room.1.product}} - {{this.room.1.price}}</p>
+{{/each}} --}}
+
+{{log '--------------------------------------'}}
+{{#each warehouse}}
+{{#each this.room}}
+{{log '------------------'}}
+{{#each this as |value key|}}
+{{log key value}}
+{{/each}}
+{{/each}}
+{{/each}}
