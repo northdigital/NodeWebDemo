@@ -16,7 +16,7 @@ app.set("view engine", "hbs");
 // routing
 
 app.get("/", (req, res) => {
-  res.render("index", { title: "Home Page", name: "Panagiotis"});
+  res.render("index", { title: "Home Page", name: "Panagiotis", displayName: false });
 });
 
 app.get("/about", (req, res) => {
