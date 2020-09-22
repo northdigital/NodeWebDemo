@@ -16,11 +16,11 @@ app.set("view engine", "hbs");
 // routing
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("index", { title: "Home Page", name: "Panagiotis"});
 });
 
 app.get("/about", (req, res) => {
-  res.render("about");
+  res.render("about", { title: "About Page"});
 });
 
 // end routing
