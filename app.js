@@ -5,8 +5,8 @@ const path = require("path");
 const app = expess();
 
 app.engine("hbs", handlebars({
-  defaultLayout: "",
-  //layoutsDir: path.join(__dirname, "views/layouts"),
+  defaultLayout: "main",
+  layoutsDir: path.join(__dirname, "views/layouts"),
   //partialsDir: path.join(__dirname, "views/partials"),
   extname: "hbs"
 }));
@@ -17,6 +17,10 @@ app.set("view engine", "hbs");
 
 app.get("/", (req, res) => {
   res.render("index");
+});
+
+app.get("/about", (req, res) => {
+  res.render("about");
 });
 
 // end routing
