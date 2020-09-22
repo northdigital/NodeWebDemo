@@ -19,12 +19,11 @@
 <p>{{this.room.1.product}} - {{this.room.1.price}}</p>
 {{/each}} --}}
 
-{{log '--------------------------------------'}}
 {{#each warehouse}}
 {{#each this.room}}
-{{log '------------------'}}
-{{#each this as |value key|}}
-{{log key value}}
+<p>---------------------------</p>
+{{#each this as |propertyValue propertyName|}}
+<p>{{propertyName}} -> {{propertyValue}}</p>
 {{/each}}
 {{/each}}
 {{/each}}
