@@ -1,0 +1,39 @@
+<h1>this is the each helper page</h1>
+
+<h2>1</h2>
+<ul>
+  {{#each teams}}
+  <li>{{this}}</li>
+  {{/each}}
+</ul>
+
+<h2>2</h2>
+<ul>
+  {{#each teams}}
+  <li>{{.}}</li>
+  {{/each}}
+</ul>
+
+<h2>3</h2>
+<ul>
+  {{#each teams as |value key|}}
+  <li>{{key}}) {{value}}</li>
+  {{/each}}
+</ul>
+
+<h2>4</h2>
+<ul>
+  {{#each user as |value key|}}
+  <li>{{key}}: {{value}}</li>
+  {{/each}}
+</ul>
+
+<h2>5</h2>
+<ul>
+  {{#each user}}
+  <li>{{@key}}:{{this}}</li>
+  {{/each}}
+</ul>
+
+<h2>6</h2>
+<p>{{user.firstName}}</p>

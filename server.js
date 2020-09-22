@@ -16,12 +16,25 @@ app.set("view engine", "hbs");
 // routing
 
 app.get("/", (req, res) => {
-  res.render("index", { title: "Home Page", name: "Panagiotis", displayName: false });
+  res.render("index", { title: "Home Page", name: "Panagiotis", displayName: true });
 });
 
 app.get("/about", (req, res) => {
-  res.render("about", { title: "About Page"});
+  res.render("about", { title: "About Page" });
 });
+
+app.get("/helpers/each", (req, res) => {
+  res.render("each", {
+    title: "Each Helper Page", teams: [
+      "PAOK",
+      "ARIS",
+      "AEK",
+      "REAL"
+    ],
+    user: { firstName: "PAKIS", lastName: "PAPAKIS" }
+  });
+});
+
 
 // end routing
 
