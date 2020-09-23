@@ -1,0 +1,14 @@
+<h3>this is the knockout page</h3>
+
+<input type="text" data-bind="value: name" />
+<div style="margin-top: 10px;"><span data-bind="text: name"></span></div>
+
+<script type="module">
+  {{> _knockout}}
+
+  var model = {
+    name: ko.observable("{{someValue}}")
+  }
+
+  ko.applyBindings(model);
+</script>

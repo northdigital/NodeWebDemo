@@ -1,17 +1,24 @@
 const expess = require("express");
-const handlebars = require("express-handlebars");
+const expHandlebars = require("express-handlebars");
 const path = require("path");
 
 const app = expess();
-
-app.engine("hbs", handlebars({
+const expHbs = expHandlebars.create({
   defaultLayout: "main",
   layoutsDir: path.join(__dirname, "views/layouts"),
   partialsDir: path.join(__dirname, "views/partials"),
   extname: "hbs"
-}));
+});
+
+expHbs.handlebars.registerHelper('favoriteTeam', (team, someValue) => {
+  return new expHbs.handlebars.SafeString(
+    "<h2>Η καλύτερη ομάδα είναι ο " + team + "</h2><strong>" + someValue + "</strong>");
+});
+
+app.engine("hbs", expHbs.engine);
 
 app.set("view engine", "hbs");
+app.use('/modules', expess.static(path.join(__dirname, 'node_modules')));
 
 // routing
 
@@ -51,6 +58,21 @@ app.get("/helpers/lookup", (req, res) => {
     title: "Lookup Page",
     data: { subdata: { thevalue: "some value" } },
     teams: ["PAOK", "ARIS", "AEK", "REAL"]
+  });
+});
+
+app.get("/helpers/customhelper", (req, res) => {
+  res.render("customhelper", {
+    title: "Custom Helper Page",
+    data: { subdata: { thevalue: "some value" } },
+    teams: ["PAOK", "ARIS", "AEK", "REAL"]
+  });
+});
+
+app.get("/knockout", (req, res) => {
+  res.render("knockout", {
+    title: "knockout demo",
+    someValue: "this is a handlebar value"
   });
 });
 
