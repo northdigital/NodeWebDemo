@@ -10,10 +10,19 @@ const expHbs = expHandlebars.create({
   extname: "hbs"
 });
 
+// registerHelper
+
 expHbs.handlebars.registerHelper('favoriteTeam', (team, someValue) => {
   return new expHbs.handlebars.SafeString(
     "<h2>Η καλύτερη ομάδα είναι ο " + team + "</h2><strong>" + someValue + "</strong>");
 });
+
+expHbs.handlebars.registerHelper('knockoutjs', () => {
+  return new expHbs.handlebars.SafeString(
+    "import '/modules/knockout/build/output/knockout-latest.debug.js';");
+});
+
+// end registerHelper
 
 app.engine("hbs", expHbs.engine);
 
