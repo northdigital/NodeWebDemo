@@ -17,6 +17,19 @@ expHbs.handlebars.registerHelper('favoriteTeam', (team, someValue) => {
     "<h2>Η καλύτερη ομάδα είναι ο " + team + "</h2><strong>" + someValue + "</strong>");
 });
 
+expHbs.handlebars.registerHelper('list', (values, options) => {
+  var result = "<ul>";
+  
+  for(var element of values)
+    result += `<li>${element}</li>`;
+  
+  result += "</ul>";
+
+  result = new expHbs.handlebars.SafeString(result);
+  
+  return options.fn({ result: result, count: values.length });
+});
+
 expHbs.handlebars.registerHelper('knockoutjs', () => {
   return new expHbs.handlebars.SafeString(
     "import '/modules/knockout/build/output/knockout-latest.debug.js';");
