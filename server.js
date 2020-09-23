@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/about", (req, res) => {
-  res.render("about", { title: "About Page" });
+  res.render("about", { title: "About Page", copywrite: "(c) Panagiotis" });
 });
 
 app.get("/helpers/each", (req, res) => {
