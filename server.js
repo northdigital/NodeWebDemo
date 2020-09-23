@@ -18,16 +18,16 @@ expHbs.handlebars.registerHelper('favoriteTeam', (team, someValue) => {
 });
 
 expHbs.handlebars.registerHelper('list', (values, options) => {
-  var result = "<ul>";
+  var result = `${options.fn({count: values.length})}<ul>`;
   
   for(var element of values)
-    result += `<li>${element}</li>`;
+    result += `<li>${options.fn({team: element})}</li>`;
   
-  result += "</ul>";
+  result += `</ul>`;
 
   result = new expHbs.handlebars.SafeString(result);
   
-  return options.fn({ result: result, count: values.length });
+  return result;
 });
 
 expHbs.handlebars.registerHelper('knockoutjs', () => {
