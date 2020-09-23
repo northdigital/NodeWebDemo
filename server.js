@@ -7,7 +7,7 @@ const app = expess();
 app.engine("hbs", handlebars({
   defaultLayout: "main",
   layoutsDir: path.join(__dirname, "views/layouts"),
-  //partialsDir: path.join(__dirname, "views/partials"),
+  partialsDir: path.join(__dirname, "views/partials"),
   extname: "hbs"
 }));
 
@@ -43,6 +43,14 @@ app.get("/helpers/each2", (req, res) => {
       { room: [{ product: "cars", price: 1000 }, { product: "bikes", price: 170 }] },
       { room: [{ product: "tomatoes", price: 20 }, { product: "potatoes", price: 10 }] }
     ]
+  });
+});
+
+app.get("/helpers/lookup", (req, res) => {
+  res.render("lookup", {
+    title: "Lookup Page",
+    data: { subdata: { thevalue: "some value" } },
+    teams: ["PAOK", "ARIS", "AEK", "REAL"]
   });
 });
 
