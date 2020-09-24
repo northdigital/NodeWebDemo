@@ -18,7 +18,7 @@ expHbs.handlebars.registerHelper('favoriteTeam', (team, someValue) => {
 });
 
 expHbs.handlebars.registerHelper('list', (values, options) => {
-  var result = `${options.fn({count: values.length})}<ul>`;
+  var result = `<div style="margin-top:20px;">${options.fn({count: values.length})}</div><ul>`;
   
   for(var element of values)
     result += `<li>${options.fn({team: element})}</li>`;
