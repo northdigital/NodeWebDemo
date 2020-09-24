@@ -22,10 +22,8 @@ const expHbs = expHandlebars.create({
 });
 
 app.engine("hbs", expHbs.engine);
-
 app.set("view engine", "hbs");
 app.use('/modules', express.static(path.join(__dirname, 'node_modules')));
-
 app.use("/", routes);
 
 app.listen(PORT, (req, res) => {
