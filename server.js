@@ -2,6 +2,9 @@ const express = require("express");
 const expHandlebars = require("express-handlebars");
 const path = require("path");
 const routes = require("./routes/handlers");
+const favoriteTeam = require("./helpers/favoriteTeam");
+const list = require("./helpers/list");
+const knockoutjs = require("./helpers/knockoutjs");
 
 const PORT = process.env.PORT || 7171;
 
@@ -10,35 +13,13 @@ const expHbs = expHandlebars.create({
   defaultLayout: "main",
   layoutsDir: path.join(__dirname, "views/layouts"),
   partialsDir: path.join(__dirname, "views/partials"),
-  extname: "hbs"
+  extname: "hbs",
+  helpers: {
+    favoriteTeam: favoriteTeam,
+    list: list,
+    knockoutjs: knockoutjs
+  }
 });
-
-// registerHelper
-
-expHbs.handlebars.registerHelper('favoriteTeam', (team, someValue) => {
-  return new expHbs.handlebars.SafeString(
-    "<h2>Η καλύτερη ομάδα είναι ο " + team + "</h2><strong>" + someValue + "</strong>");
-});
-
-expHbs.handlebars.registerHelper('list', (values, options) => {
-  var result = `<div style="margin-top:20px;">${options.fn({count: values.length})}</div><ul>`;
-  
-  for(var element of values)
-    result += `<li>${options.fn({team: element})}</li>`;
-  
-  result += `</ul>`;
-
-  result = new expHbs.handlebars.SafeString(result);
-  
-  return result;
-});
-
-expHbs.handlebars.registerHelper('knockoutjs', () => {
-  return new expHbs.handlebars.SafeString(
-    "import '/modules/knockout/build/output/knockout-latest.debug.js';");
-});
-
-// end registerHelper
 
 app.engine("hbs", expHbs.engine);
 
