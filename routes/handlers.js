@@ -51,6 +51,7 @@ router.get("/helpers/customhelper", (req, res) => {
 router.get("/knockout", (req, res) => {
   res.render("knockout", {
     title: "knockout demo",
+    jsImportsBefore: ["/modules/knockout/build/output/knockout-latest.debug.js"],
     someValue: "this is a handlebar value"
   });
 });

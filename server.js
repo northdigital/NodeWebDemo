@@ -4,7 +4,7 @@ const path = require("path");
 const routes = require("./routes/handlers");
 const favoriteTeam = require("./helpers/favoriteTeam");
 const list = require("./helpers/list");
-const knockoutjs = require("./helpers/knockoutjs");
+const importJs = require("./helpers/importJs");
 
 const PORT = process.env.PORT || 7171;
 
@@ -17,7 +17,7 @@ const expHbs = expHandlebars.create({
   helpers: {
     favoriteTeam: favoriteTeam,
     list: list,
-    knockoutjs: knockoutjs
+    importJs: importJs
   }
 });
 
