@@ -11,14 +11,14 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}\\server.js"
+      "program": "${workspaceFolder}/server.js"
     },
     {
       "type": "node",
       "request": "launch",
       "name": "Launch via nodemon",
       "runtimeExecutable": "nodemon",
-      "program": "${workspaceFolder}\\server.js",
+      "program": "${workspaceFolder}/server.js",
       "restart": true,
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
